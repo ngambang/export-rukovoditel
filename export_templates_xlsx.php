@@ -420,14 +420,14 @@ class export_templates_xlsx
             //handle type data attachment
             case 'fieldtype_attachments': 
             case 'fieldtype_input_file':
-                   $output_value2 ='';
+                   $output_value2 = [];
                    
                     foreach (explode(",",$output_value) as $key => $filename){
                      $filenya = explode(",",$field_value)[$key];
-                     $output_value2 .= url_for('export/file', 'id=' . $blocks['fields_id'] . '&path=' . $blocks['entities_id'] . '-' . $this->fields_id . '&file=' . urlencode($filenya));
+                     $output_value2[] = url_for('export/file', 'id=' . $blocks['fields_id'] . '&path=' . $blocks['entities_id'] . '-' . $this->fields_id . '&file=' . urlencode($filenya));
                     }
                     
-                    $output_value = $output_value2;
+                    $output_value = implode(" \n ",$output_value2);
                      
 
                 break;
